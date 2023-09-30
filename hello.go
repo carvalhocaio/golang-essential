@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -50,5 +51,6 @@ func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 
 	site := "https://www.alura.com.br"
-	// resp, err := http.Get(site)
+	resp, _ := http.Get(site)
+	fmt.Println(resp)
 }
