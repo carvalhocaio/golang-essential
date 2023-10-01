@@ -53,6 +53,11 @@ func leComando() int {
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 
+	var sites [4]string
+	sites[0] = "https://random-status-code.onrender.com"
+	sites[1] = "https://alura.com.br"
+	sites[2] = "https://caelum.com,br"
+
 	site := "https://random-status-code.onrender.com"
 	resp, _ := http.Get(site)
 
