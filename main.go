@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net/http"
 	"os"
@@ -93,7 +94,13 @@ func leSitesDoArquivo() []string {
 		fmt.Println(err)
 	}
 
-	fmt.Println(arquivo)
+	leitor := bufio.NewReader(arquivo)
+	linha, err := leitor.ReadString('\n')
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(linha)
 
 	return sites
 }
