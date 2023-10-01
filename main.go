@@ -58,11 +58,7 @@ func leComando() int {
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 
-	sites := []string{
-		"https://random-status-code.onrender.com",
-		"https://alura.com.br",
-		"https://caelum.com.br",
-	}
+	sites := leSitesDoArquivo()
 
 	for i := 0; i < monitoramentos; i++ {
 		for _, site := range sites {
@@ -84,4 +80,13 @@ func testaSite(site string) {
 	} else {
 		fmt.Println(">>", site, "está com problemas. Status Code:", resp.StatusCode)
 	}
+}
+
+func leSitesDoArquivo() []string {
+	var sites []string
+
+	arquivo, _ := os.Open("sites.txt")
+	fmt.Println(arquivo)
+
+	return sites
 }
