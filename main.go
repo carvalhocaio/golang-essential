@@ -53,17 +53,19 @@ func leComando() int {
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 
-	var sites [4]string
-	sites[0] = "https://random-status-code.onrender.com"
-	sites[1] = "https://alura.com.br"
-	sites[2] = "https://caelum.com,br"
+	sites := []string{
+		"https://random-status-code.onrender.com",
+		"https://alura.com.br",
+		"https://caelum.com.br",
+	}
 
-	site := "https://random-status-code.onrender.com"
-	resp, _ := http.Get(site)
+	for _, site := range sites {
+		resp, _ := http.Get(site)
 
-	if resp.StatusCode == 200 {
-		fmt.Println("Site:", site, "foi carregado com sucesso!")
-	} else {
-		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+		if resp.StatusCode == 200 {
+			fmt.Println("Site:", site, "foi carregado com sucesso!")
+		} else {
+			fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+		}
 	}
 }
