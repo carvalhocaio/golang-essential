@@ -73,7 +73,10 @@ func iniciarMonitoramento() {
 }
 
 func testaSite(site string) {
-	resp, _ := http.Get(site)
+	resp, err := http.Get(site)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	if resp.StatusCode == 200 {
 		fmt.Println(">>", site, "foi carregado com sucesso!")
@@ -85,7 +88,11 @@ func testaSite(site string) {
 func leSitesDoArquivo() []string {
 	var sites []string
 
-	arquivo, _ := os.Open("sites.txt")
+	arquivo, err := os.Open("sites.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	fmt.Println(arquivo)
 
 	return sites
